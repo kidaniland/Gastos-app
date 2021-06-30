@@ -20,7 +20,7 @@ const App = () => {
           <ContainerButtons>
             <Button to="/categorias">Categorías</Button>
             <Button to="/listas">Lista de gastos</Button>
-            <Button>X</Button>
+            <Button to="/">X</Button>
           </ContainerButtons>
         </ContainerHeader>
       </Header>
