@@ -1,12 +1,9 @@
 import React from 'react'
 import { Helmet } from 'react-helmet';
-import {
-  Header,
-  Title,
-  ContainerHeader,
-  ContainerButtons
-} from './elements/Header';
+import { Header, Title, ContainerHeader, ContainerButtons } from './elements/Header';
 import Button from './elements/Button';
+import SignOffButton from './elements/SignOffButton';
+import ExpensesForm from './components/ExpensesForm';
 
 const App = () => {
   return (
@@ -20,10 +17,11 @@ const App = () => {
           <ContainerButtons>
             <Button to="/categorias">Categorías</Button>
             <Button to="/listas">Lista de gastos</Button>
-            <Button to="/">X</Button>
+            <SignOffButton /> 
           </ContainerButtons>
         </ContainerHeader>
       </Header>
+      <ExpensesForm/>
     </>
   )
 }
