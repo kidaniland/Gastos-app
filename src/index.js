@@ -13,6 +13,7 @@ import RegisterUser from './components/RegisterUser';
 import { Helmet } from 'react-helmet';
 import favicon from './images/logo.png';
 import Background from '../src/elements/Background';
+import { AuthProvider } from '../src/context/authContext';
 
 WebFont.load({
   google: {
@@ -25,23 +26,23 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <link rel="shortcut icon" href={favicon} type="image/x-icon"/>
+        <link rel="shortcut icon" href={favicon} type="image/x-icon" />
       </Helmet>
-
-      <BrowserRouter>
-        <Container>
-          <Switch>
-            <Route exact path="/iniciar-sesion" component={SignIn}/>
-            <Route exact path="/registro" component={RegisterUser}/>
-            <Route exact path="/categorias" component={ExpensesByCategory}/>
-            <Route exact path="/listas" component={ExpensesList}/>
-            <Route exact path="/editar/:id" component={EditExpenses}/>
-            <Route exact path="/" component={App}/>
-          </Switch>
-        </Container>
-
-        <Background/>
-      </BrowserRouter>
+      <AuthProvider>
+        <BrowserRouter>
+          <Container>
+            <Switch>
+              <Route exact path="/iniciar-sesion" component={SignIn} />
+              <Route exact path="/registro" component={RegisterUser} />
+              <Route exact path="/categorias" component={ExpensesByCategory} />
+              <Route exact path="/listas" component={ExpensesList} />
+              <Route exact path="/editar/:id" component={EditExpenses} />
+              <Route exact path="/" component={App} />
+            </Switch>
+          </Container>
+          <Background />
+        </BrowserRouter>
+      </AuthProvider>
     </>
   )
 }
