@@ -5,7 +5,7 @@ import App from './App';
 import WebFont from 'webfontloader';
 import Container from '../src/elements/Container';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import SingIn from './components/SingIn';
+import SignIn from './components/SignIn';
 import EditExpenses from './components/EditExpenses';
 import ExpensesByCategory from './components/ExpensesByCategory';
 import ExpensesList from './components/ExpensesList';
@@ -31,7 +31,7 @@ const Index = () => {
       <BrowserRouter>
         <Container>
           <Switch>
-            <Route exact path="/iniciar-sesion" component={SingIn}/>
+            <Route exact path="/iniciar-sesion" component={SignIn}/>
             <Route exact path="/registro" component={RegisterUser}/>
             <Route exact path="/categorias" component={ExpensesByCategory}/>
             <Route exact path="/listas" component={ExpensesList}/>
