@@ -2,10 +2,14 @@ import { useState } from 'react';
 import { FilterContainer, Form, Input, BigInput, ContainerBtn } from '../elements/FormElements';
 import Button from '../elements/Button';
 import { ReactComponent as IconPlus } from './../images/plus.svg';
+import SelectCategory from './SelectCategory';
+import DatePicker from './DatePicker';
 
 const ExpensesForm = () => {
     const [inputDescription, setInputDescription] = useState('');
     const [inputValue, setInputValue] = useState('');
+    const [category, setCategory] = useState('hogar');
+    const [date, setDate] = useState(new Date());
 
     const handleChange = (e) => {
         if (e.target.name === "description") {
@@ -18,8 +22,8 @@ const ExpensesForm = () => {
     return (
         <Form>
             <FilterContainer>
-                <p>Select</p>
-                <p>Date picker</p>
+                <SelectCategory category={category} setCategory={setCategory}/>
+                <DatePicker date={date} onDateChange={(day)=>{ console.log(day); setDate(day)}}/>
             </FilterContainer>
             <div>
                 <Input 
