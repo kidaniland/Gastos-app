@@ -13,7 +13,8 @@ import { ReactComponent as IconDelete } from '../images/borrar.svg'
 import { Link } from 'react-router-dom';
 import Button from '../elements/Button';
 import { format, fromUnixTime } from 'date-fns';
-import { es } from 'date-fns/locale'; 
+import { es } from 'date-fns/locale';
+import deleteExpense from '../firebase/deleteExpense';
 import {
     List,
     ElementList,
@@ -32,22 +33,22 @@ import {
 
 
 const ExpensesList = () => {
-    //const context = useContext(AuthContext) <-- vendrá desde un hook
+    //const context = useContext(AuthContext) <-- ahora vendrá desde un hook
     const [expenses, getMoreExpenses, moreExpensesToLoad] = useGetExpenses();
     console.log("--->", expenses);
 
     const dateFormat = (date) => {
-        return format(fromUnixTime(date), "dd 'de' MMMM 'de' yyyy", {locale: es})
+        return format(fromUnixTime(date), "dd 'de' MMMM 'de' yyyy", { locale: es })
     }
 
-    const dateIsEqual = (expenses,index, expense) => {
+    const dateIsEqual = (expenses, index, expense) => {
         if (index !== 0) {
             const currentDate = dateFormat(expense.fecha);
-            const previousDate = dateFormat(expenses[index -1].fecha);
-            if(currentDate === previousDate){
+            const previousDate = dateFormat(expenses[index - 1].fecha);
+            if (currentDate === previousDate) {
                 return true
             } else {
-                return false 
+                return false
             }
         }
 
@@ -67,7 +68,7 @@ const ExpensesList = () => {
                     return (
                         <div key={expense.id}>
                             { //si la fecha no es igual mostramos el componente
-                            !dateIsEqual(expenses, index, expense) && 
+                                !dateIsEqual(expenses, index, expense) &&
                                 <Date>{dateFormat(expense.fecha)}</Date>
                             }
                             <ElementList key={expense.id}>
@@ -86,7 +87,7 @@ const ExpensesList = () => {
                                         <IconEdit />
                                     </ButtonAction>
                                     <ButtonAction>
-                                        <IconDelete />
+                                        <IconDelete onClick={() => deleteExpense(expense.id)}/>
                                     </ButtonAction>
                                 </ButtonsContainer>
                             </ElementList>
@@ -94,9 +95,9 @@ const ExpensesList = () => {
 
                     );
                 })}
-                {moreExpensesToLoad && 
+                {moreExpensesToLoad &&
                     <ContainerCentralButton>
-                        <ButtonAddMore onClick={()=>getMoreExpenses()}>
+                        <ButtonAddMore onClick={() => getMoreExpenses()}>
                             Cargar más
                         </ButtonAddMore>
                     </ContainerCentralButton>
