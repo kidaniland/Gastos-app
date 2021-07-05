@@ -17,8 +17,6 @@ import { es } from 'date-fns/locale';
 import {
     List,
     ElementList,
-    CategoriesList,
-    ElementCategoriesList,
     Category,
     Description,
     Value,
@@ -35,7 +33,7 @@ import {
 
 const ExpensesList = () => {
     //const context = useContext(AuthContext) <-- vendrá desde un hook
-    const [expenses] = useGetExpenses();
+    const [expenses, getMoreExpenses, moreExpensesToLoad] = useGetExpenses();
     console.log("--->", expenses);
 
     const dateFormat = (date) => {
@@ -96,9 +94,13 @@ const ExpensesList = () => {
 
                     );
                 })}
-                <ContainerCentralButton>
-                    <ButtonAddMore>Cargar más</ButtonAddMore>
-                </ContainerCentralButton>
+                {moreExpensesToLoad && 
+                    <ContainerCentralButton>
+                        <ButtonAddMore onClick={()=>getMoreExpenses()}>
+                            Cargar más
+                        </ButtonAddMore>
+                    </ContainerCentralButton>
+                }
                 {expenses.length === 0 &&
                     <SubtitleContainer>
                         <Subtitle>No hay más gastos por mostrar</Subtitle>
