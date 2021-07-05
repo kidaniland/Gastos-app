@@ -12,6 +12,8 @@ import { ReactComponent as IconEdit } from '../images/editar.svg'
 import { ReactComponent as IconDelete } from '../images/borrar.svg'
 import { Link } from 'react-router-dom';
 import Button from '../elements/Button';
+import { format, fromUnixTime } from 'date-fns';
+import { es } from 'date-fns/locale'; 
 import {
     List,
     ElementList,
@@ -35,6 +37,24 @@ const ExpensesList = () => {
     //const context = useContext(AuthContext) <-- vendrá desde un hook
     const [expenses] = useGetExpenses();
     console.log("--->", expenses);
+
+    const dateFormat = (date) => {
+        return format(fromUnixTime(date), "dd 'de' MMMM 'de' yyyy", {locale: es})
+    }
+
+    const dateIsEqual = (expenses,index, expense) => {
+        if (index !== 0) {
+            const currentDate = dateFormat(expense.fecha);
+            const previousDate = dateFormat(expenses[index -1].fecha);
+            if(currentDate === previousDate){
+                return true
+            } else {
+                return false 
+            }
+        }
+
+    }
+
     return (
         <>
             <Helmet>
@@ -45,28 +65,35 @@ const ExpensesList = () => {
                 <Title>Lista de gastos</Title>
             </Header>
             <List>
-                {expenses.map((expense) => {
+                {expenses.map((expense, index) => {
                     return (
-                        <ElementList key={expense.id}>
-                            <Category>
-                                <IconCategory id={expense.categoria} />
-                                {expense.categoria}
-                            </Category>
-                            <Description>
-                                {expense.descripcion}
-                            </Description>
-                            <Value>
-                                {formatquantity(expense.valor)}
-                            </Value>
-                            <ButtonsContainer>
-                                <ButtonAction as={Link} to={`/editar/${expense.id}`}>
-                                    <IconEdit />
-                                </ButtonAction>
-                                <ButtonAction>
-                                    <IconDelete />
-                                </ButtonAction>
-                            </ButtonsContainer>
-                        </ElementList>
+                        <div key={expense.id}>
+                            { //si la fecha no es igual mostramos el componente
+                            !dateIsEqual(expenses, index, expense) && 
+                                <Date>{dateFormat(expense.fecha)}</Date>
+                            }
+                            <ElementList key={expense.id}>
+                                <Category>
+                                    <IconCategory id={expense.categoria} />
+                                    {expense.categoria}
+                                </Category>
+                                <Description>
+                                    {expense.descripcion}
+                                </Description>
+                                <Value>
+                                    {formatquantity(expense.valor)}
+                                </Value>
+                                <ButtonsContainer>
+                                    <ButtonAction as={Link} to={`/editar/${expense.id}`}>
+                                        <IconEdit />
+                                    </ButtonAction>
+                                    <ButtonAction>
+                                        <IconDelete />
+                                    </ButtonAction>
+                                </ButtonsContainer>
+                            </ElementList>
+                        </div>
+
                     );
                 })}
                 <ContainerCentralButton>
@@ -75,8 +102,8 @@ const ExpensesList = () => {
                 {expenses.length === 0 &&
                     <SubtitleContainer>
                         <Subtitle>No hay más gastos por mostrar</Subtitle>
-                        <Button as={Link} to={"/"}/>
-                    </SubtitleContainer> 
+                        <Button as={Link} to={"/"} />
+                    </SubtitleContainer>
                 }
             </List>
             <ResultsBar />
