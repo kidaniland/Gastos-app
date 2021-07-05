@@ -85,7 +85,7 @@ const ExpensesForm = () => {
                     type="text" 
                     name="value" 
                     id="value" 
-                    placeholder="$0"
+                    placeholder="$0.00"
                     value={inputValue}
                     onChange={handleChange}
                 />
