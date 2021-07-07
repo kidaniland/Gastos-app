@@ -35,7 +35,7 @@ import {
 const ExpensesList = () => {
     //const context = useContext(AuthContext) <-- ahora vendrá desde un hook
     const [expenses, getMoreExpenses, moreExpensesToLoad] = useGetExpenses();
-    console.log("--->", expenses);
+    //console.log("--->", expenses);
 
     const dateFormat = (date) => {
         return format(fromUnixTime(date), "dd 'de' MMMM 'de' yyyy", { locale: es })

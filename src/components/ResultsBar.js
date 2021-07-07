@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import theme from '../theme';
-import formatquantity from '../helpers/convertToCurrency'; 
+import formatquantity from '../helpers/convertToCurrency';
+import { useTotalintheMont } from '../context/totalSpendintheMonthContex';
 
 const TotalExpensesBar = styled.div`
     background: ${theme.verde};
@@ -23,10 +24,11 @@ const TotalExpensesBar = styled.div`
 
 
 const ResultsBar = () => {
+    const { total } = useTotalintheMont();
     return (
         <TotalExpensesBar>
             <p>Total gastado en el mes:</p>
-            <p>{formatquantity(0.00)}</p>
+            <p>{formatquantity(total)}</p>
         </TotalExpensesBar>
     )
 }

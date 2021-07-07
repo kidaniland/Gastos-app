@@ -15,6 +15,7 @@ import favicon from './images/logo.png';
 import Background from '../src/elements/Background';
 import { AuthProvider } from '../src/context/authContext';
 import PrivateRoute from './components/PrivateRoute';
+import { TotalSpendProvider } from './context/totalSpendintheMonthContex';
 
 WebFont.load({
   google: {
@@ -30,31 +31,33 @@ const Index = () => {
         <link rel="shortcut icon" href={favicon} type="image/x-icon" />
       </Helmet>
       <AuthProvider>
-        <BrowserRouter>
-          <Container>
-            <Switch>
-              <Route exact path="/iniciar-sesion" component={SignIn} />
-              <Route exact path="/registro" component={RegisterUser} />
-              <PrivateRoute path="/categorias">
-                <ExpensesByCategory/>
-              </PrivateRoute>
-              <PrivateRoute path="/listas">
-                <ExpensesList/>
-              </PrivateRoute>
-              <PrivateRoute path="/editar/:id">
-                <EditExpenses/>
-              </PrivateRoute>
-              <PrivateRoute path="/">
-                <App/>
-              </PrivateRoute>
-              {/*<Route exact path="/categorias" component={ExpensesByCategory} />
+        <TotalSpendProvider>
+          <BrowserRouter>
+            <Container>
+              <Switch>
+                <Route exact path="/iniciar-sesion" component={SignIn} />
+                <Route exact path="/registro" component={RegisterUser} />
+                <PrivateRoute path="/categorias">
+                  <ExpensesByCategory />
+                </PrivateRoute>
+                <PrivateRoute path="/listas">
+                  <ExpensesList />
+                </PrivateRoute>
+                <PrivateRoute path="/editar/:id">
+                  <EditExpenses />
+                </PrivateRoute>
+                <PrivateRoute path="/">
+                  <App />
+                </PrivateRoute>
+                {/*<Route exact path="/categorias" component={ExpensesByCategory} />
               <Route exact path="/listas" component={ExpensesList} />
               <Route exact path="/editar/:id" component={EditExpenses} />
               <Route exact path="/" component={App} />*/}
-            </Switch>
-          </Container>
-          <Background />
-        </BrowserRouter>
+              </Switch>
+            </Container>
+            <Background />
+          </BrowserRouter>
+        </TotalSpendProvider>
       </AuthProvider>
     </>
   )

@@ -4,7 +4,9 @@ import { Helmet } from 'react-helmet';
 import BtnReturn from '../elements/BtnReturn';
 import ResultsBar from './ResultsBar';
 
+
 const ExpensesByCategory = () => {
+ 
     return (
         <>
             <Helmet>
