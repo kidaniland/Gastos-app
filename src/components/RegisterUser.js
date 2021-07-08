@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import { Header, Title, ContainerHeader } from '../elements/Header';
 import Button from '../elements/Button';
 import { Form, Input, ContainerBtn } from '../elements/FormElements';
-import { ReactComponent as SvgLogin } from '../images/registro.svg';
+import { ReactComponent as SvgLogin } from '../images/register.svg';
 import styled from 'styled-components';
 import { auth } from '../firebase/firebaseConfig';
 import { useHistory } from 'react-router';
@@ -11,7 +11,7 @@ import Alert from '../elements/Alert';
 
 const Svg = styled(SvgLogin)`
     width: 100%;
-    max-height: 6.25rem;
+    max-height: 8.25rem;
     margin-bottom: 1.25rem;
 `;
 
