@@ -1,3 +1,4 @@
+![React](https://img.icons8.com/color/48/000000/react-native.png) ![Figma](https://img.icons8.com/color/48/000000/figma--v1.png) ![Firebase](https://img.icons8.com/color/48/000000/firebase.png)
 # Lista de gastos personales
 https://lista-de-gastos.web.app/iniciar-sesion
 
