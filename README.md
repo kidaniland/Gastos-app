@@ -2,17 +2,8 @@
 # Lista de gastos personales
 https://lista-de-gastos.web.app/iniciar-sesion
 
-## Índice
 
-* [1. Resumen del proyecto](#1-resumen-del-proyecto)
-* [2. Objetivos de aprendizaje](#2-objetivos-de-aprendizaje)
-* [3. Prototipo](#3-prototipo)
-* [4. Historias de usuario](#4-historias-de-usuario)
-
-## 1. Resumen del proyecto
-     
-
-## 2. Objetivos de aprendizaje
+## Objetivos de aprendizaje
 
 Construir una interfaz web utilizando React Js que permita ingresar, editar, eliminar y ordenar datos relacionados con los gastos personales de nuestro usuario.
 
@@ -49,7 +40,8 @@ Construir una interfaz web utilizando React Js que permita ingresar, editar, eli
 * [X] Firebase security rules.
 * [X] Observadores (onAuthStateChanged / onSnapshot).
 
-## 3. Prototipo
+## Prototipo FIGMA: 
+https://www.figma.com/proto/VO2XXuVK8pI1OV1mjjDEo7/Lista-de-gastos?node-id=29%3A171&scaling=min-zoom&page-id=0%3A1&starting-point-node-id=29%3A171
 
-## 4. Historias de usuario
+
 
